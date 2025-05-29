@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Images</title>
+</head>
+<body>
+    <h1>Foydalanuvchilar ro'yxati</h1>
+
+    {% for user in users %}
+        <div style="margin-bottom: 20px;">
+            <p><strong>Ism:</strong> {{ user.name }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Xabar:</strong> {{ user.message }}</p>
+
+            {% if user.image %}
+                <p>
+                    <strong>Rasm Link:</strong>
+                    <a href="{{ user.image.url }}" target="_blank">{{ user.image.url }}</a>
+                </p>
+                <img src="{{ user.image.url }}" width="200" alt="Foydalanuvchi rasmi">
+            {% else %}
+                <p>Rasm mavjud emas</p>
+            {% endif %}
+        </div>
+    {% endfor %}
+</body>
+</html>
